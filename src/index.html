@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+  Homepage
+  <ul id="fruit-list"></ul>
+
+  <script>
+      var fruitListUl = document.getElementById('fruit-list');
+    
+      function updateList(fruitList){
+        fruitList.forEach(function(fruit){
+          fruitListUl.appendChild(createLi(fruit));
+        })
+      }
+      
+      function createLi(label){
+        var li = document.createElement('li');
+        var text = document.createTextNode(label);
+        li.appendChild(text);
+        return li;
+      }
+  
+      function getJsonData(url, callback){
+        var xhttp = new XMLHttpRequest(); 
+        xhttp.open('GET', url, true);
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            callback(JSON.parse(this.responseText))
+          }
+        };
+        xhttp.send();
+      }
+  
+      getJsonData('/fruit.json', updateList)
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "cypress-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "browser-sync start -s src -w --no-open",
+    "cypress": "cypress open",
+    "serveWithCypress": "WAIT_FOR_MESSAGE='Reloading Browsers...' cypressAppWatcher npm run serve",
+    "test": "npm-run-all --parallel serveWithCypress cypress"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "cypress": "^3.1.5",
+    "cypress-app-watcher-preprocessor": "^1.1.1",
+    "npm-run-all": "^4.1.5"
+  }
+}
